@@ -1,41 +1,40 @@
-{% load static %}
-{% load jformat %}
-{% load Home_tags %}
-{% load Member_tags %}
-{% load Blog_tags %}
+{% load static %} {% load jformat %}
 
 <!DOCTYPE html>
 <html lang="fa">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description"
-              content="انجمن علمی دانشجویی مهندسی کامپیوتر دانشگاه شهید باهنر کرمان, Computer Engineering Scientific Student Association">
-        <meta name="keywords" content="{% block keywords %}{% endblock keywords %}">
-        <meta name="keywords" content="انجمن علمی دانشجویی, مهندسی کامپیوتر, دانشگاه شهید باهنر کرمان"/>
-        <title>CSA-UK | {% block title %}{% endblock title %}</title>
-        <link href="{% static 'images/favicon.png' %}" rel="shortcut icon" type="image/png">
-        <link href="{% static 'css/style.css' %}" rel="stylesheet">
-        <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            {% block style %}{% endblock style %}
-        </style>
-    </head>
-    <body>
-        {% ssa_information_tag as ssa_information %}
-        <div class="preloader"></div>
-        {% include "header/header.html" %}
-        {% block content %}
-        {% endblock content %}
-        {% include "footer/footer.html" %}
-        <div class="back-to-top bg-gradient-color">
-            <i class="fab fa-angle-up"></i>
-        </div>
-        <script src="{% static 'js/jquery.v1.12.4.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js/jquery-core-plugins.js' %}"></script>
-        <script src="{% static 'js/main.js' %}"></script>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="انجمن علمی دانشجویی مهندسی کامپیوتر دانشگاه شهید باهنر کرمان, Computer Engineering Scientific Student Association"
+    />
+    <meta name="keywords" content="{% block keywords %}{% endblock keywords %}" />
+    <meta name="keywords" content="انجمن علمی دانشجویی, مهندسی کامپیوتر, دانشگاه شهید باهنر کرمان" />
+    <title>CSA-UK | {% block title %}{% endblock title %}</title>
+    <link href="{% static 'images/favicon.png' %}" rel="shortcut icon" type="image/png" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      {% block style %}{% endblock style %}
+    </style>
+  </head>
+  <body>
+    <div class="preloader"></div>
+    {% include "header/header.html" %}
+    {% block content %} {% endblock content %}
+    {% include "footer/footer.html" %}
+    <div class="back-to-top bg-gradient-color">
+      <i class="fab fa-angle-up"></i>
+    </div>
+    <script src="{% static 'js/jquery.v1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-core-plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
 </html>

@@ -15,34 +15,6 @@ from django.contrib.auth import views as auth_view
 from django.http import HttpResponseRedirect
 
 
-def dashboard(request):
-    user_unread_posts = methods.get_user_unread_post(request)
-
-    if request.method == 'POST':
-        form = user_forms.EmailSendForm(request.POST)
-        if form.is_valid():
-            subject = form.cleaned_data['subject']
-            message = form.cleaned_data['message']
-            recipients_form = form.cleaned_data['receivers']
-
-            recipients = str(recipients_form).split(',')
-            sender = settings.EMAIL_HOST_USER
-
-            send_mail(subject, message, sender, recipients)
-
-            return HttpResponseRedirect('/user/dashboard/')
-
-    else:
-        form = user_forms.EmailSendForm()
-
-    context = {
-        'user_unread_post': user_unread_posts,
-        'email_sent_form': form
-    }
-
-    return render(request, 'UserManager/dashboard.html', context)
-
-
 class LoginUserView(TemplateView):
     template_name = 'UserManager/login.html'
 

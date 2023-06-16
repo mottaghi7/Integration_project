@@ -151,7 +151,7 @@ taggit.apps.TaggitAppConfig.verbose_name = 'تگ زن'
 
 # custom user manager setting
 LOGIN_REDIRECT_URL = 'UserManager:dashboard'
-LOGOUT_REDIRECT_URL = 'Home:index'
+# LOGOUT_REDIRECT_URL = 'Home:index'
 LOGIN_URL = reverse_lazy('UserManager:login')
 AUTH_USER_MODEL = 'UserManager.User'
 AUTHENTICATION_BACKENDS = [

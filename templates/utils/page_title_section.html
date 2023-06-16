@@ -1,26 +1,23 @@
 <section class="page-title-section">
-    <div class="container">
-        <div class="row">
-            {% with child_page_titles=page_title_childs %}
-                <div class="col-xl-12 text-center">
-                    <div class="page-title-content">
-                        <h3 class="title text-white">{{ child_page_titles|last }}</h3>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                {% for chlid_page_title in child_page_titles %}
-                                    {% if child_page_title == child_page_titles|first %}
-                                        <li class="breadcrumb-item"><a
-                                                href="{% url 'Home:index' %}">{{ child_page_title }}</a></li>
-                                    {% else %}
-                                        <li class="breadcrumb-item active"
-                                            aria-current="page">{{ chlid_page_title }}</li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            {% endwith %}
+  <div class="container">
+    <div class="row">
+      {% with child_page_titles=page_title_childs %}
+      <div class="col-xl-12 text-center">
+        <div class="page-title-content">
+          <h3 class="title text-white">{{ child_page_titles|last }}</h3>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              {% for chlid_page_title in child_page_titles %} {% if child_page_title ==
+              child_page_titles|first %}
+              <li class="breadcrumb-item"><a href="#">{{ child_page_title }}</a></li>
+              {% else %}
+              <li class="breadcrumb-item active" aria-current="page">{{ chlid_page_title }}</li>
+              {% endif %} {% endfor %}
+            </ol>
+          </nav>
         </div>
+      </div>
+      {% endwith %}
     </div>
+  </div>
 </section>
