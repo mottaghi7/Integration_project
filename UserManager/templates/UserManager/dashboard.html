@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load jformat %}
+{% load i18n %}
+{% load admin_urls %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <section class="page-title-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 text-center">
+                        <div class="page-title-content">
+                            <h3 class="title text-white">سلام {{ user.get_short_name|default:user.username }} عزیز</h3>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'Home:index' %}">خانه</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">داشبورد</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-section pdt-110 pdb-95 pdb-lg-90"
+                 data-background="{% static 'images/bg/abs-bg1.png' %}">
+            {% if user.is_staff or user.is_superuser %}
+                <div class="service-details-page">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12 col-xl-12">
+                                        <div class="news-wrapper">
+                                            <div class="news-details">
+                                                <div class="news-description mb-20">
+                                                    <center>
+                                                        <h4 class="the-title">شما با کاربر ادمین وارد شده اید، در
+                                                            صورت
+                                                            تمایل میتوانید به <a
+                                                                    href="{% url 'admin:index' %}">پنل ادمین</a> وارد
+                                                            شوید
+                                                        </h4>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-xl-12 col-lg-12">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xl-12">
+                                                <div class="news-wrapper">
+                                                    <div class="news-details">
+                                                        <div class="news-description mb-20">
+                                                            <div class="col-lg-12 col-xl-12 mrb-50">
+                                                                <h2 class="mrb-30">ارسال ایمیل دستی به کاربران</h2>
+                                                            </div>
+                                                            <form method="post">
+                                                                {% csrf_token %}
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="form-group mrb-25">
+                                                                            <input type="text" placeholder="موضوع"
+                                                                                   name="subject"
+                                                                                   class="form-control">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <div class="form-group mrb-25">
+                                                                    <textarea rows="4" placeholder="متن پیام"
+                                                                              name="message"
+                                                                              class="form-control"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-12">
+                                                                        <div class="form-group mrb-25">
+                                                                    <textarea rows="4" placeholder="گیرندگان"
+                                                                              name="receivers"
+                                                                              class="form-control"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-8">
+                                                                        <div class="form-group">
+                                                                            <button type="submit"
+                                                                                    class="cs-btn-one btn-md btn-round btn-primary-color element-shadow">
+                                                                                ارسال کن
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="service-details-page pdt-110 pdb-90">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-12 col-xl-12 mrb-50">
+                                        <h5 class="mrb-15 text-primary-color sub-title-side-line">اخبار و
+                                            اطلاعیه‌ها</h5>
+                                        <h2 class="mrb-30">اخبار خوانده نشده توسط شما در ۱۰ روز اخیر</h2>
+                                    </div>
+                                    {% for post in user_unread_post %}
+                                        <div class="col-lg-12 col-xl-4">
+                                            <div class="news-wrapper mrb-30 mrb-sm-40">
+                                                <div class="news-thumb">
+                                                    <img class="img-full" src="{{ post.image.url }}" alt="">
+                                                    <div class="news-top-meta">
+                                                        <span class="entry-category">{{ post.category }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="news-details">
+                                                    <div class="news-description mb-20">
+                                                        <h4 class="the-title mrb-30"><a
+                                                                href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                                                        </h4>
+                                                        <div class="news-bottom-meta">
+                                                <span class="entry-author"><i
+                                                        class="far fa-user mrr-10 text-primary-color"></i>{{ post.author.first_name }} {{ post.author.last_name }}</span><br>
+                                                            <span class="entry-date mrr-20"><i
+                                                                    class="far fa-calendar-alt mrr-10 text-primary-color"></i>{{ post.date_create|jformat:"%Y/%m/%d" }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    {% for announcement in user_unread_announcement_list %}
+                                        <div class="col-lg-12 col-xl-12">
+                                            <div class="news-wrapper mrb-30 mrb-sm-40">
+                                                <div class="news-details">
+                                                    <div class="news-description mb-20">
+                                                        <center>
+                                                            <h4 class="the-title mrb-30">{{ announcement.title }}</h4>
+                                                        </center>
+                                                        <div class="news-bottom-meta">
+                                                            <span class="entry-author">{{ announcement.body|safe }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </section>
+    {% else %}
+        <meta http-equiv="Refresh" content="0;url={% url 'UserManager:login' %}">
+    {% endif %}
+{% endblock content %}

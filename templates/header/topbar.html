@@ -1,0 +1,24 @@
+<div class="header-top-area bg-primary-color d-none d-lg-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 header-top-left-part">
+                <span>{{ ssa_information.short_announcement | default:"دانشگاه شهید باهنر کرمان، انجمن علمی دانشجویی مهندسی کامپیوتر" }}</span>
+            </div>
+            <div class="col-lg-6 header-top-right-part text-right">
+                <ul class="social-links">
+                    <li><a href="{{ ssa_information.telegram | default:"https://csa-uk.ir/" }}"><i
+                            class="fab fa-telegram"></i></a></li>
+                    <li><a href="{{ ssa_information.instagram | default:"https://csa-uk.ir/" }}"><i
+                            class="fab fa-instagram"></i></a></li>
+                    <li><a href="{{ ssa_information.twitter | default:"https://csa-uk.ir/" }}"><i
+                            class="fab fa-twitter"></i></a></li>
+                    <li><a href="{{ ssa_information.linkedin | default:"https://csa-uk.ir/" }}"><i
+                            class="fab fa-linkedin-in"></i></a></li>
+                </ul>
+                <div class="language">
+                    <a class="language-btn" href="#"><i class="webexflaticon flaticon-internet"></i> فارسی</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,80 @@
+{% load static %}
+<footer class="footer">
+    <div class="footer-main-area" data-background="{% static 'images/footer-bg.png' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="widget footer-widget">
+                        <img src="{% static 'images/logo-footer.png' %}" alt="" class="mrb-20">
+                        <address class="mrb-25">
+                            <p class="text-light-gray">{{ ssa_information.short_address | default:"انجمن علمی دانشجویی مهندسی کامپیوتر" }}</p>
+                            <div class="mrb-10"><a href="mailto:{{ ssa_information.email | default:"csauk.info@gmail.com" }}" class="text-light-gray"><i
+                                    class="fas fa-envelope mrr-10"></i>{{ ssa_information.email | default:"csauk.info@gmail.com" }}</a></div>
+                            <div class="mrb-0"><a href="{{ ssa_information.site_address | default:"https://csa-uk.ir/" }}" class="text-light-gray"><i
+                                    class="fas fa-globe mrr-10"></i>{{ ssa_information.site_address | default:"https://csa-uk.ir/" }}</a></div>
+                        </address>
+                        <ul class="social-list">
+                            <li><a href="{{ ssa_information.telegram | default:"https://csa-uk.ir/" }}"><i class="fab fa-telegram"></i></a></li>
+                            <li><a href="{{ ssa_information.instagram | default:"https://csa-uk.ir/" }}"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="{{ ssa_information.twitter | default:"https://csa-uk.ir/" }}"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="{{ ssa_information.linkedin | default:"https://csa-uk.ir/" }}"><i class="fab fa-linkedin-in"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="widget footer-widget">
+                        <h5 class="widget-title text-white mrb-30">لینک های مفید</h5>
+                        <ul class="footer-widget-list">
+                            <li><a target="_blank" href="https://uk.ac.ir/">دانشگاه شهید باهنر کرمان</a></li>
+                            <li><a target="_blank" href="https://depeng.uk.ac.ir/">دانشکده فنی و مهندسی</a></li>
+                            <li><a target="_blank" href="https://ce.uk.ac.ir/">بخش مهندسی کامپیوتر</a></li>
+                            <li><a target="_blank" href="https://vcultural.uk.ac.ir/">معاونت فرهنگی دانشگاه</a></li>
+                            <li><a target="_blank" href="https://vcedu.uk.ac.ir/">معاونت آموزشی دانشگاه</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="widget footer-widget">
+                        <h5 class="widget-title text-white mrb-30">بخش های سایت</h5>
+                        <ul class="footer-widget-list">
+                            <li><a href="{% url 'Home:index' %}">خانه</a></li>
+                            <li><a href="{% url 'Library:library' %}">کتابخانه</a></li>
+                            <li><a href="{% url 'Blog:blog' %}">اخبار و اطلاعیه ها</a></li>
+                            <li><a href="{% url 'Magazine:magazine' %}">نشریه</a></li>
+                            <li><a href="{% url 'Home:contact' %}">تماس با ما</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6">
+                    <div class="widget footer-widget">
+                        <h5 class="widget-title text-white mrb-30">خبرنامه</h5>
+                        <p class="text-light-gray">مشترک رویدادهای انجمن باشید و از تازه ترین مسابقات، دوره ها و همایش
+                            ها اطلاع یابید</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="email" class="form-control" name="email" placeholder="ایمیل خود را وارد کنید">
+                            <button type="submit" class="cs-btn-one btn-gradient-color btn-sm has-icon mrt-20"><i
+                                    class="webexflaticon flaticon-send"></i>ارسال کن
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="text-center">
+                        <span class="text-light-gray">قدرت گرفته از  <a class="text-primary-color" target="_blank"
+                                                                        href="https://www.djangoproject.com/"> جنگو</a> / طراحی شده توسط <a
+                                class="text-primary-color" target="_blank" href="mailto:mh.mohammadzade98@gmail.com"> M. H. Mohammadzade</a> و <a
+                                class="text-primary-color" target="_blank" href="https://t.me/Seyedali_h"> S. A. Hasanzade</a> و <a
+                                class="text-primary-color" target="_blank" href="https://t.me/Powervm"> M. Mehrabian</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

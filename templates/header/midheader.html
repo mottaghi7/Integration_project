@@ -1,0 +1,38 @@
+{% load static %}
+<div class="header-middle">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 d-flex align-items-center justify-content-between">
+                <a class="navbar-brand logo" href="{% url 'Home:index' %}">
+                    <img id="logo-image" class="img-center" src="{% static 'images/logo.png' %}" alt="">
+                </a>
+                <div class="topbar-info-area d-none d-sm-flex align-items-center justify-content-between">
+                    <div class="d-none d-lg-flex align-items-center ml-4">
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'UserManager:dashboard' %}" class="cs-btn-one btn-primary-color">داشبورد</a>
+                            &nbsp;&nbsp;
+                            <a href="{% url 'UserManager:password_change' %}"
+                               class="cs-btn-one btn-primary-color">تغییر گذرواژه</a>
+                            &nbsp;&nbsp;
+                            <a href="{% url 'UserManager:logout' %}"
+                               class="cs-btn-one btn-primary-color">خروج</a>
+                        {% else %}
+                            <div class="d-flex align-items-center mr-3">
+                                <i class="webexflaticon flaticon-mail-1 text-primary-color"></i>
+                                <div>
+                                    <h6>برای ما ایمیل بزنید</h6>
+                                    <a class="text-gray"
+                                       href="mailto:{{ ssa_information.email | default:"csauk.info@gmail.com" }}">
+                                        {{ ssa_information.email | default:"csauk.info@gmail.com" }}</a>
+                                </div>
+                            </div>
+                            <a href="{% url 'UserManager:signin' %}"
+                               class="cs-btn-one btn-primary-color">ورود</a> &nbsp;&nbsp; <a href="{% url 'UserManager:signup' %}"
+                               class="cs-btn-one btn-primary-color">ثبت نام</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

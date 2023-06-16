@@ -1,0 +1,7 @@
+{% extends 'admin/base_site.html' %}
+{% load static %}
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">انجمن عملی دانشجویی مهندسی کامپیوتر</a></h1>
+{% endblock %}
+{% block extrastyle %}{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/custom.css' %}"/>{% endblock %}

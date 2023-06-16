@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}404{% endblock title %}
+{% block content %}
+    <div class="error-area vh d-flex" data-background="{% static 'images/bg/404.jpg' %}" data-overlay-light="94">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="error-inner text-center">
+                        <h1 class="error-title">4<span class="text-primary-color">0</span>4</h1>
+                        <h2 class="error-text">با عرض پوزش ، مشکلی پیش آمد!</h2>
+                        <p>این صفحه به دلیل نگهداری یا مشکلات سیستم موقتاً در دسترس نیست. ما خیلی زود باز خواهیم گشت</p>
+                        <a class="cs-btn-one btn-md btn-primary-color" href="{% url 'Home:index' %}">بازگشت به خانه</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
